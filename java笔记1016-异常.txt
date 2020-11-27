@@ -1,0 +1,70 @@
+异常（Exception）：异常指的是程序运行时发生的不正常事件；异常能够被程序处理，保证程序继续运行下去
+
+错误（Error）:错误程序没法处理，例如内存泄漏。发生错误后，一般虚拟机会选择终止程序运行，程序员需要修改代码才能解决相关错误.
+
+
+运行时异常：也称为非检测异常（unchecked Exception）， 这些异常在编译期不检测，程序中可以选择处理，也可以不处理。如果不处理运行时会中断，但是编译没问题。
+
+非运行时异常：也称为检测异常（checked Exception）, 是必须进行处理的异常，如果不处理，将发生编译期错误。
+编译期异常。
+
+
+运行时异常：都是RuntimeException的子类
+1.NullPointerException 空指针异常
+2.ArithmeticException-数学异常  /0
+3.IndexOutOfBoundsException：索引越界异常，
+包括字符串索引StringIndexOutOfBoundsException和
+数组索引ArrayIndexOutOfBoundsException两种；
+发生前提：当访问字符串中的字符或者数组中的元素，超过了其长度时；
+4.NumberFormatException-数字格式异常
+5.ClassCastException-类型转换异常
+6.InputMismatchException 用户通过Scanner录入异常
+
+编译期异常：非运行时异常。
+1.FileNotFoundException 文件找不到异常
+2.IOException IO异常
+
+
+可能发生异常的代码放在try块中
+catch进行可能发生的异常抓捕    
+()里需要定义要抓捕的异常类型对象，一旦发生异常，程序不会终止 会执行catch块中的信息
+
+当try块发生异常被catch捕获，try块中后续代码不会执行。直接执行catch块后面代码
+
+一组try-catch块， 
+try{}块只能有一个 catch块可以有多个
+
+同一个类try{}块可以有多组
+
+
+必须有try，catch可以有1个或多个，finally最多1个，可以没有，不能有多个；
+还有另外一种组合：只有try和finally，没有catch
+
+
+finally块前有return语句，finally依然被执行；
+finally块前有System.exit(0)语句，finally不被执行；
+
+
+throw 和 throws
+throws一个方法如果使用了throws，那么调用该方法时，编译器会提醒必须处理相关异常。抛出异常。throws抛出的可能有多个异常。
+
+throw可以手动抛出一个异常。如果抛出的是运行时异常，可以在编译时不进行处理，在运行时处理即可。如果抛出编译期异常，必须在编译时，处理或者throws抛出异常。
+throw抛出的是一个异常。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,150 @@
+
+1、创建门类，定义开门、关门的方法
+   创建锁的接口，定义上锁、开锁的方法
+   创建防盗门类，继承门类，实现锁的接口
+   多态方式创建对象 测试
+2、在2题基础之上，增加防盗门门铃功能，主要是实现拍照存档，测试
+
+3、编写一个用于放置常量的Java类Constants，具有常量MAX和MIN
+编写一个测试类ConstantsTest，在main方法中求取Constants中的两个常量之差 
+
+4、创建一个接口MathConstants，定义常量PI 
+创建Yuan类  计算圆面积的方法 计算圆周长的方法 测试
+
+
+
+5、
+下面接口中定义的方法哪些错误？为什么？
+public interface Test{
+    public void test();
+	public abstract int getA();
+	public void test2(){  
+	}
+	String test5(String s);
+
+}
+6、
+public interface A1{
+   public void test1();
+   public void test2();
+}
+
+public interface A2 extends A1{
+   public void test3();
+}
+
+public class C implements A1{
+	//必须实现哪些方法
+}
+
+public class C implements A2{
+    //必须实现哪些方法
+}
+public abstract class D implements A2{
+    //必须实现哪些方法
+}
+
+public class E extends D{
+   //必须实现哪些方法
+}
+
+
+
+7、下列哪个类的声明是正确的？（     ）
+A．abstract final class HI{}                      B．abstract private move(){}    
+C．protected private number;                     D．public abstract class Car{}
+
+8、为AB类的一个无形式参数无返回值的方法method书写方法头，
+使得使用类名AB作为前缀就可以调用它，该方法头的形式为(    )。
+A. static  void  method( )                    B. public  void  method( )
+C. final  void  method( )                    D. abstract  void  method( );
+
+9、写出打印结果
+public class A{
+   {
+      System.out.println("11");
+   }
+   static{
+      System.out.println("22");
+   }
+   public A(){
+      System.out.println("A()");
+   }
+}
+
+public class Test{
+   main(){
+          //打印结果    
+   }
+}
+
+public class Test{
+   main(){
+      A a=new A();//打印结果 
+	  A a2=new A();    // 
+   }
+}
+----------------------------
+10 
+public class A{
+   {
+      System.out.println("11");
+   }
+   static{
+      System.out.println("22");
+   }
+   public A(){
+      System.out.println("A()");
+   }
+   main(){
+           //打印结果    
+   }
+   main(){
+      A a=new A();  //打印结果   
+   }
+}
+
+11、
+public class A{
+  public static int num=1;
+}
+
+public class Test{
+   main(){
+      A a=new A();
+	  a.num++;
+	  A.num++;
+	  A a2=new A();
+	  a2.num++;
+	  System.out.println(A.num);   
+   }
+}
+12、
+public class A{
+   {
+      System.out.println("11");
+   }
+   static{
+      System.out.println("22");
+   }
+   public A(){
+      System.out.println("A()");
+   }
+}
+public class B extends A{
+   {
+      System.out.println("B:11");
+   }
+   static{
+      System.out.println("B:22");
+   }
+   public B(){
+      System.out.println("B()");
+   }
+}
+
+public class Test{
+   main(){
+      A a=new B();//打印结果    
+   }
+}

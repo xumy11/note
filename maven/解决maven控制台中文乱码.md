@@ -1,0 +1,1 @@
+Setting->maven->runner的VMoptions:栏里添加    -Dfile.encoding=GB2312

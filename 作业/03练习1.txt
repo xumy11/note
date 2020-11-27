@@ -1,0 +1,73 @@
+2.输入进口车价格和排量，计算进口汽车的消费税，注：税费按照车价*税率（排量不同税率不同）计算
+税率标准：
+    排气量在1.0升以下(含1.0升)的 1%
+　　排气量在1.0升以上至1.5升(含1.5升)的 3%
+　　排气量在1.5升以上至2.0升(含2.0升)的 5%
+　　排气量在2.0升以上至2.5升(含2.5升)的 9%
+　　排气量在2.5升以上至3.0升(含3.0升)的 12%
+　　排气量在3.0升以上至4.0升(含4.0升)的 25%
+　　排气量在4.0升以上的 40%
+
+		Scanner input = new Scanner		(System.in);
+		System.out.println("请输入价格");
+		int price  = input.nextInt();
+		System.out.println("请输入排量：");
+		double pai  = input.nextDouble();
+		double  shui;
+		if(pai<=1){
+			shui = price*0.01;
+		}else if(pai<=1.5){
+			shui = price*0.03;
+		}else  if(pai<=2){
+			shui = price*0.05;
+		}else  if(pai<=2.5){
+			shui = price*0.09;
+		}else  if(pai<=3){
+			shui = price*0.12;
+		}else  if(pai<=4){
+			shui = price*0.25;
+		}else{
+			shui = price*0.4;
+		}
+		
+		System.out.println("税款为："+shui);
+		
+		//if  else后面语句只有一句可以不加 大括号    但是不推荐
+
+
+3.输入一个人的工资，判断其应该交的个人所得税（起征点为5000）
+超出部分的税率如下
+<3000元		千分之3	   0.003
+<12000元	        千分之10	
+<25000元   	千分之20	
+<35000元	        千分之25	
+<55000元	        千分之30	
+<80000元 	千分之35	
+>=80000元	千分之45
+
+
+ Scanner input = new Scanner(System.in);
+		System.out.println("请输入您的工资：");
+		int gongzi = input.nextInt();//2500
+		int chao = gongzi-5000;    //-2500
+		double jiaoMoney = 0;
+		//chao  <=0 
+		if(chao<=0){
+			jiaoMoney  = 0;
+		}else  if(chao<3000){
+			jiaoMoney =  chao*0.003;
+		}else  if(chao<12000){
+			jiaoMoney =  chao*0.010;
+		}else  if(chao<25000){
+			jiaoMoney =  chao*0.020;
+		}else  if(chao<35000){
+			jiaoMoney =  chao*0.025;
+		}else  if(chao<55000){
+			jiaoMoney =  chao*0.030;
+		}else  if(chao<80000){
+			jiaoMoney =  chao*0.035;
+		}else{
+			jiaoMoney =  chao*0.040;
+		}
+		
+		System.out.println(jiaoMoney);

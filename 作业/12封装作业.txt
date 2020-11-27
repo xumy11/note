@@ -1,0 +1,44 @@
+﻿以下方法哪些是构造方法？
+public class Sample {
+	private int x;
+	public Sample() {  
+		x = 1;
+	}
+	public Sample(int i) { 
+		x = i;
+	}
+	public int Sample(int i) { 
+		x = i;
+		return x++;
+	}
+	private Sample(int i, String s){}
+
+	public  Sample(String s,int i){}
+
+	private Sampla(int i){
+		x=i++;
+	}
+    private void Sampla(int i){
+		x=i++;
+    }
+}
+
+
+1、请通过代码封装，实现如下需求：
+编写一个类Book，代表教材:
+具有属性：名称（title）、页数（pageNum），
+为各属性设置赋值和取值方法
+具有方法:detail，用来在控制台输出每本教材的名称和页数
+编写测试类BookTest进行测试：为Book对象的属性赋予初始值，并调用Book对象的detail方法，看看输出是否正确
+具有带参数的构造方法：用来完成对象的初始化工作，并在构造方法中完成对页数的最小值限制
+编写测试类Book2Test进行测试：初始化一个Book2对象，并调用该Book2对象的detail方法，看看输出是否正确
+
+2、编写一个类Book3，代表教材：具有属性：名称（title）、页数（pageNum）、种类（type）;
+具有方法：detail，用来在控制台输出每本教材的名称、页数、种类;
+具有两个带参构造方法：第一个构造方法中，设置教材种类为“计算机”（固定），其余属性的值由参数给定；
+第二个构造方法中，所有属性的值都由参数给定;
+编写测试类Book3Test进行测试：分别以两种方式完成对两个Book3对象的初始化工作，并分别调用它们的detail方法，看看输出是否正确
+
+3、将Card Atm类的属性实现封装(自行)
+
+
