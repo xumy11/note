@@ -19,11 +19,7 @@ git remote xxx		// 查看指定远程仓库地址
 git remote rm <origin>		// 删除指定远程仓库
 git remote add <origin> <url>	// 添加远程仓库
 git remote set-url <origin> <url>	// 修改远程仓库
-
-
 ```
-
-
 
 ## 修改和提交
 
@@ -84,7 +80,6 @@ git fetch <remote>		// 从远程库获取代码
 git pull <remote> <branch>		// 下载代码及快速合并
 git push <remote> <branch>		// 上传代码及快速合并
 git push <remote> :<branch/tag-name>	//删除远程分支或标签
-
 git push --tags		// 上传所有标签
 ```
 
