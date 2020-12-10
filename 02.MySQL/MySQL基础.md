@@ -1,5 +1,5 @@
 
-## 数据库的基本概念
+# 数据库的基本概念
 	1. 数据库的英文单词： DataBase 简称 ： DB
 	2. 什么数据库？
 		* 用于存储和管理数据的仓库。
@@ -10,7 +10,7 @@
 		3. 使用了统一的方式操作数据库 -- SQL
 
 
-# MySQL数据库软件
+# MySQL数据库
 	1. MySQL服务启动
 		1. 手动。
 		2. cmd--> services.msc 打开服务的窗口
@@ -21,8 +21,6 @@
 		1. mysql -uroot -p密码
 		2. mysql -hip -uroot -p连接目标的密码
 		3. mysql --host=ip --user=root --password=连接目标的密
-
-
 
 # SQL
 
@@ -48,7 +46,7 @@
 		4) DCL(Data Control Language)数据控制语言(了解)
 			用来定义数据库的访问权限和安全级别，及创建用户。关键字：GRANT， REVOKE 等
 
-## DDL:操作数据库、表
+## DDL：操作数据库、表
 
 	1. 操作数据库：CRUD
 		1. C(Create):创建
@@ -168,114 +166,263 @@
 
 
 ## DQL：查询表中的记录
-	* select * from 表名;
-	
-	1. 语法：
-		select
-			字段列表
-		from
-			表名列表
-		where
-			条件列表
-		group by
-			分组字段
-		having
-			分组之后的条件
-		order by
-			排序
-		limit
-			分页限定
 
 
-	2. 基础查询
-		1. 多个字段的查询
-			select 字段名1，字段名2... from 表名；
-			* 注意：
-				* 如果查询所有字段，则可以使用*来替代字段列表。
-		2. 去除重复：
-			* distinct
-		3. 计算列
-			* 一般可以使用四则运算计算一些列的值。（一般只会进行数值型的计算）
-			* ifnull(表达式1,表达式2)：null参与的运算，计算结果都为null
-				* 表达式1：哪个字段需要判断是否为null
-				* 如果该字段为null后的替换值。
-		4. 起别名：
-			* as：as也可以省略
+### 1. 基础查询
 
 
-	3. 条件查询
-		1. where子句后跟条件
-		2. 运算符
-			* > 、< 、<= 、>= 、= 、<>
-			* BETWEEN...AND  
-			* IN( 集合) 
-			* LIKE：模糊查询
-				* 占位符：
-					* _:单个任意字符
-					* %：多个任意字符
-			* IS NULL  
-			* and  或 &&
-			* or  或 || 
-			* not  或 !
+```sql
+* select * from 表名;
+1. 语法：
+	select
+		字段列表
+	from
+		表名列表
+	where
+		条件列表
+	group by
+		分组字段
+	having
+		分组之后的条件
+	order by
+		排序
+	limit
+		分页限定
+		
+-- 多个字段的查询
+	select 字段名1，字段名2... from 表名；
+	* 注意：
+		* 如果查询所有字段，则可以使用*来替代字段列表。
+		
+-- 去除重复：
+		* distinct
+		
+-- 计算列
+		* 一般可以使用四则运算计算一些列的值。（一般只会进行数值型的计算）
+		* ifnull(表达式1,表达式2)：null参与的运算，计算结果都为null
+			* 表达式1：哪个字段需要判断是否为null
+			* 如果该字段为null后的替换值。
+-- 起别名：
+		* as：as也可以省略
+```
+
+### 2. 条件查询
+
+
+```sql
+1. where子句后跟条件
+2. 运算符
+		* > 、< 、<= 、>= 、= 、<>
+		* BETWEEN...AND  
+		* IN( 集合) 
+		* LIKE：模糊查询
+			* 占位符：
+				* _:单个任意字符
+				* %：多个任意字符
+		* IS NULL  
+		* and  或 &&
+		* or  或 || 
+		* not  或 !
+		
+-- 查询年龄大于20岁
+	SELECT * FROM student WHERE age > 20;
+	SELECT * FROM student WHERE age >= 20;
 			
-				-- 查询年龄大于20岁
+-- 查询年龄等于20岁
+	SELECT * FROM student WHERE age = 20;
+			
+-- 查询年龄不等于20岁
+	SELECT * FROM student WHERE age != 20;
+	SELECT * FROM student WHERE age <> 20;
+			
+-- 查询年龄大于等于20 小于等于30
+	SELECT * FROM student WHERE age >= 20 && age <=30;
 	
-				SELECT * FROM student WHERE age > 20;
-				
-				SELECT * FROM student WHERE age >= 20;
-				
-				-- 查询年龄等于20岁
-				SELECT * FROM student WHERE age = 20;
-				
-				-- 查询年龄不等于20岁
-				SELECT * FROM student WHERE age != 20;
-				SELECT * FROM student WHERE age <> 20;
-				
-				-- 查询年龄大于等于20 小于等于30
-				
-				SELECT * FROM student WHERE age >= 20 &&  age <=30;
-				SELECT * FROM student WHERE age >= 20 AND  age <=30;
-				SELECT * FROM student WHERE age BETWEEN 20 AND 30;
-				
-				-- 查询年龄22岁，18岁，25岁的信息
-				SELECT * FROM student WHERE age = 22 OR age = 18 OR age = 25
-				SELECT * FROM student WHERE age IN (22,18,25);
-				
-				-- 查询英语成绩为null
-				SELECT * FROM student WHERE english = NULL; -- 不对的。null值不能使用 = （!=） 判断
-				
-				SELECT * FROM student WHERE english IS NULL;
-				
-				-- 查询英语成绩不为null
-				SELECT * FROM student WHERE english  IS NOT NULL;
-				
-				-- 查询姓马的有哪些？ like
-				SELECT * FROM student WHERE NAME LIKE '马%';
-				-- 查询姓名第二个字是化的人
-				
-				SELECT * FROM student WHERE NAME LIKE "_化%";
-				
-				-- 查询姓名是3个字的人
-				SELECT * FROM student WHERE NAME LIKE '___';
-				
-				-- 查询姓名中包含德的人
-	            SELECT * FROM student WHERE NAME LIKE '%德%';
+	SELECT * FROM student WHERE age >= 20 AND  age <=30;
+	
+	SELECT * FROM student WHERE age BETWEEN 20 AND 30;
+			
+-- 查询年龄22岁，18岁，25岁的信息
+	SELECT * FROM student WHERE age = 22 OR age = 18 OR age = 25
+	SELECT * FROM student WHERE age IN (22,18,25);
+			
+-- 查询英语成绩为null
+	SELECT * FROM student WHERE english = NULL; 
+	-- 不对的。null值不能使用 = （!=） 判断
+			
+	SELECT * FROM student WHERE english IS NULL;
+			
+-- 查询英语成绩不为null
+	SELECT * FROM student WHERE english  IS NOT NULL;
+			
+-- 查询姓马的有哪些？ like
+	SELECT * FROM student WHERE NAME LIKE '马%';
+-- 查询姓名第二个字是化的人
+	SELECT * FROM student WHERE NAME LIKE "_化%";
+			
+-- 查询姓名是3个字的人
+	SELECT * FROM student WHERE NAME LIKE '___';
+			
+-- 查询姓名中包含德的人
+    SELECT * FROM student WHERE NAME LIKE '%德%';
+```
 
-## nvl与coalesce的区别
+### 3. 排序查询
 
+```sql
+* 语法：order by 子句
+		* order by 排序字段1 排序方式1 ，  排序字段2 排序方式2...
+
+	* 排序方式：
+		* ASC：升序，默认的。
+		* DESC：降序。
+
+	* 注意：
+		* 如果有多个排序条件，则当前边的条件值一样时，才会判断第二条件。
+```
+
+### 4. 聚合函数
+
+```sql
+* 聚合函数：将一列数据作为一个整体，进行纵向的计算。
+	1. count：计算个数
+		1. 一般选择非空的列：主键
+		2. count(*)
+	2. max：计算最大值
+	3. min：计算最小值
+	4. sum：计算和
+	5. avg：计算平均值
+	
+    * 注意：聚合函数的计算，排除null值。
+        解决方案：
+            1. 选择不包含非空的列进行计算
+            2. IFNULL函数
+```
+
+### 5. 分组查询
+
+```sql
+* 语法：group by 分组字段；
+* 注意：
+	1. 分组之后查询的字段：分组字段、聚合函数
+	2. where 和 having 的区别？
+		where 在分组之前进行限定，如果不满足条件，则不参与分组。having在分组之后进行限定，如果不满足结果，则不会被查询出来
+		where 后不可以跟聚合函数，having可以进行聚合函数的判断。
+
+-- 按照性别分组。分别查询男、女同学的平均分
+	SELECT sex , AVG(math) FROM student GROUP BY sex;
+		
+-- 按照性别分组。分别查询男、女同学的平均分,人数
+	SELECT sex , AVG(math),COUNT(id) FROM student GROUP BY sex;
+		
+--  按照性别分组。分别查询男、女同学的平均分,人数 要求：分数低于70分的人，不参与分组
+	SELECT sex , AVG(math),COUNT(id) FROM student WHERE math > 70 GROUP BY sex;
+		
+--  按照性别分组。分别查询男、女同学的平均分,人数 要求：分数低于70分的人，不参与分组,分组之后。人数要大于2个人
+	SELECT sex , AVG(math),COUNT(id) FROM student WHERE math > 70 GROUP BY sex HAVING COUNT(id) > 2;
+		
+	SELECT sex , AVG(math),COUNT(id) 人数 FROM student WHERE math > 70 GROUP BY sex HAVING 人数 > 2;
+```
+
+### 6. 分页查询
+
+```sql
+* 语法：limit 开始的索引,每页查询的条数;
+* 公式：开始的索引 = （当前的页码 - 1） * 每页显示的条数
+	-- 每页显示3条记录
+		SELECT * FROM student LIMIT 0,3; -- 第1页
+		
+		SELECT * FROM student LIMIT 3,3; -- 第2页
+		
+		SELECT * FROM student LIMIT 6,3; -- 第3页
+
+* limit 是一个MySQL"方言"
+```
+
+
+
+## DCL：管理用户，授权
+
+```sql
+1. 管理用户
+	1. 添加用户：
+			* 语法：CREATE USER '用户名'@'主机名' IDENTIFIED BY '密码';
+			
+	2. 删除用户：
+			* 语法：DROP USER '用户名'@'主机名';
+			
+	3. 修改用户密码：
+			UPDATE USER SET PASSWORD = PASSWORD('新密码') WHERE USER = '用户名';
+			UPDATE USER SET PASSWORD = PASSWORD('abc') WHERE USER = 'lisi';
+			
+			SET PASSWORD FOR '用户名'@'主机名' = PASSWORD('新密码');
+			SET PASSWORD FOR 'root'@'localhost' = PASSWORD('123');
+
+	* mysql中忘记了root用户的密码？
+		1. cmd >> net stop mysql 停止mysql服务  -- 需要管理员运行该cmd
+		2. 使用无验证方式启动mysql服务： mysqld --skip-grant-tables
+		3. 打开新的cmd窗口,直接输入mysql命令，敲回车。就可以登录成功
+		4. use mysql;
+		5. update user set password = password('你的新密码') where user = 'root';
+		6. 关闭两个窗口
+		7. 打开任务管理器，手动结束mysqld.exe 的进程
+		8. 启动mysql服务
+		9. 使用新密码登录。
+		
+	4. 查询用户：
+		-- 1. 切换到mysql数据库
+			USE myql;
+		-- 2. 查询user表
+			SELECT * FROM USER;
+			
+2. 权限管理：
+	1. 查询权限：
+		-- 查询权限
+			SHOW GRANTS FOR '用户名'@'主机名';
+			SHOW GRANTS FOR 'lisi'@'%';
+
+	2. 授予权限：
+		-- 授予权限
+			grant 权限列表 on 数据库名.表名 to '用户名'@'主机名';
+		-- 给张三用户授予所有权限，在任意数据库任意表上
+			GRANT ALL ON *.* TO 'zhangsan'@'localhost';
+			
+	3. 撤销权限：
+		-- 撤销权限：
+			revoke 权限列表 on 数据库名.表名 from '用户名'@'主机名';
+			REVOKE UPDATE ON db3.`account` FROM 'lisi'@'%';
+	* 通配符： % 表示可以在任意主机使用用户登录数据库
+```
+
+# 数据库的备份和还原
+
+```
+1. 命令行：
+	* 语法：
+		* 备份： mysqldump -u用户名 -p密码 数据库名称 > 保存的路径
+		* 还原：
+			1. 登录数据库
+			2. 创建数据库
+			3. 使用数据库
+			4. 执行文件 source 文件路径
+```
+
+# nvl与coalesce的区别
+
+```sql
 nvl(EXPR1,0)
-如果第一个参数为null，则返回第二个参数
-如果第一个参数为非null，则返回第一个参数
+-- 如果第一个参数为null，则返回第二个参数
+-- 如果第一个参数为非null，则返回第一个参数
 
 coalesce(EXPR1,EXPR2,EXPR3...EXPRn)
-从左往右数，遇到第一个非null值，则返回该非null值。
-多层判断
+-- 从左往右数，遇到第一个非null值，则返回该非null值。多层判断
 
 第一点区别：从上面可以知道，nvl只适合于两个参数的，COALESCE适合于多个参数。
-
 第二点区别：COALESCE里的所有参数类型必须保持一致，nvl可以不一致。
 
-当然还有一些其他的区别，这里不再赘述。
+```
+
+
 
 
 
