@@ -50,6 +50,7 @@ insert into t_name (字段1,字段2,...) values(值1,值2,...);		// 表中插入
 update t_name set 字段名=值 where 条件;		// 修改表中数据
 delete from t_name where 条件；		// 删除表中某行数据
 delete from t_name;		// 清空表中数据
+select * from t_name；		// 查询
 ```
 
 ### 用户
@@ -136,3 +137,4 @@ primary key // 主键，不为空且不重复 not null,unique
 content text check(length(content>8)) //content字段内容长度要大于8
 ```
 
+## 常用函数

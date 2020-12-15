@@ -11,7 +11,7 @@ git clone <url>  // 克隆远程版本库
 git init		// 初始化本地版本库
 ```
 
-
+## 远程仓库
 
 ```
 git remote		// 查看所有远程仓库 
