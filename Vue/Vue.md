@@ -28,6 +28,10 @@ npm install vue-resource --save-dev		// 提交ajax
 
 
 
+
+
+npm config set registry		// 更换npm 仓库
+
 npm install		// 为vue项目安装依赖
 
 npm run dev		// 启动项目
