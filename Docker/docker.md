@@ -45,7 +45,7 @@ rm -rf /var/lib/docker   // docker默认工作路径
 
 ## Docker设置
 
-![image-20210602141057099](..\图片\image-20210602141057099.png)
+![image-20210602141057099](F:\note\图片\image-20210602141057099.png)
 
 ### DockerEngine配置
 
@@ -511,5 +511,22 @@ docker inspect [容器]	// 查看容器内部细节
 docker attach [容器]	// 进到容器内
 docker exec [容器]	// 进到容器内
 docker cp 容器ID:容器内的文件路径 宿主机路径	// 从容器内拷贝文件到宿主机 例：docker cp f9e29e8455a5:/tmp/yum.log /root
+```
+
+### 上传docker镜像 
+
+```java
+// 上传docker镜像 
+
+docker login --username=admin 10.127.16.91
+ 
+docker push 10.127.16.91/new_water/dms-portal:1.0.0
+```
+
+### 删除镜像
+
+```java
+docker images	// 查看docker镜像
+docker rmi [镜像Id]	// 删除指定镜像
 ```
 
